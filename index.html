@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  /* OPEN THE CONSOLE!*/
+
+  
+  /* declare variables */
+var playerScore = 0;
+var computerScore = 0;
+var gameCounter = 1;
+
+/* generate computer's turn */
+function computerPlay() {
+var randomNumber = Math.floor(Math.random() * 3);
+var options = ["Rock", "Paper", "Scissors"];
+var pick = "";
+pick = options[randomNumber];
+return(pick);
+}
+
+/* find out who wins */
+function playRound (playerSelection, computerSelection) {
+var playSelection = playerSelection.toLowerCase();
+var computSelection = computerSelection.toLowerCase();
+
+if (playSelection == computSelection) {
+  return("tie");
+}
+
+ switch (computSelection) {
+   case "rock":
+     if (playSelection == "paper") {
+       return("win");
+     } else {
+       return("loss");
+     }
+   break;
+
+   case "paper":
+     if (playSelection == "scissors") {
+       return("win");
+     } else {
+       return("loss");
+     }
+   break;
+
+   case "scissors":
+     if (playSelection == "rock") {
+       return("win");
+     } else {
+       return("loss");
+     }
+   break;
+ }
+}
+
+/* log the game to get a winner, 5 games total */
+function game() {
+for (i = 0; i < 5; i++) {
+  let round = playRound(prompt("Rock, Paper, Scissors", ""), computerPlay())
+  if (round == "win") {
+    console.log("Player wins this round");
+    playerScore++;
+  } else if (round == "loss") {
+    console.log("Computer wins this round");
+    computerScore++;
+  } else {
+    console.log("It's a tie");
+  }
+}
+
+if (playerScore > computerScore) {
+  console.log("Player beats Computer! " + playerScore + " to " + computerScore)
+} else if (playerScore < computerScore) {
+  console.log("Computer beats Player! " + computerScore + " to " + playerScore)
+} else {
+  console.log("The game finished a draw!")
+}
+}
+
+game();
+  </script>
+</body>
+</html>
